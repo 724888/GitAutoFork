@@ -45,7 +45,6 @@ class Gitstar():
         global AUTH
 
         AUTH = HTTPBasicAuth(self.GITNAME, self.GITPASSWORD)
-        print url;
         res = requests.post("https://api.github.com/repos/" + url + "/forks"
                             , headers={'Content-Length': '0'}
                             , auth=AUTH);
