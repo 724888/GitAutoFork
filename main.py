@@ -57,7 +57,7 @@ class Gitstar():
 
     def run_fork(self):
         urls = self.get_gitstar_fork_recommend()
-        print "get total github repo:%d" % len(urls)
+        print "get total github repo for [%s]:%d" % (self.NAME, len(urls))
         i = 1
         for url in urls:
             self.fork(url)
@@ -68,4 +68,8 @@ class Gitstar():
             self.update_gitstar()
 
 
-Gitstar(NAME, PASSWORD, GITNAME, GITPASSWORD).run_fork()
+if 'NAME' in dir():
+    Gitstar(NAME, PASSWORD, GITNAME, GITPASSWORD).run_fork()
+else:
+    for i in range(0, len(NAMES)):
+        Gitstar(NAMES[i], PASSWORDS[i], GITNAMES[i], GITPASSWORDS[i]).run_fork()
