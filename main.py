@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+from settings import *
 import sys
 import requests
 import time
@@ -14,13 +15,12 @@ global GITNAME
 global GITPASSWORD
 
 
-# url = "https://api.github.com/repos/peng8350/JPTabBar/forks"
 class Gitstar():
-    def __init__(self, url=""):
-        self.NAME = NAME
-        self.PASSWORD = PASSWORD
-        self.GITNAME = GITNAME
-        self.GITPASSWORD = GITPASSWORD
+    def __init__(self, name, password, git_name, git_password):
+        self.NAME = name
+        self.PASSWORD = password
+        self.GITNAME = git_name
+        self.GITPASSWORD = git_password
 
         self.cookie = None
 
@@ -56,7 +56,7 @@ class Gitstar():
         print "update:" + str(res.status_code == 200)
 
 
-GS = Gitstar()
+GS = Gitstar(NAME, PASSWORD, GITNAME, GITPASSWORD)
 urls = GS.get_gitstar_fork_recommend()
 print "get total github repo:%d" % len(urls)
 i = 1
