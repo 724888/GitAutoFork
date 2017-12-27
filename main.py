@@ -50,9 +50,12 @@ class Gitstar():
                             , auth=AUTH);
 
     def update_gitstar(self):
-        url = "http://gitstar.top:88/api/users/{}/forking-repos/update".format(self.NAME)
-        res = requests.get(url, headers={'Accept': 'application/json', 'Cookie': self.cookie})
-        print "update:" + str(res.status_code == 200)
+        while True:
+            url = "http://gitstar.top:88/api/users/{}/forking-repos/update".format(self.NAME)
+            res = requests.get(url, headers={'Accept': 'application/json', 'Cookie': self.cookie})
+            print "update:" + str(res.status_code == 200)
+            if res.status_code == 200:
+                break
 
     def run_fork(self):
         urls = self.get_gitstar_fork_recommend()
